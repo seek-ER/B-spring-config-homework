@@ -1,5 +1,7 @@
 package com.thoughtworks.capability.gtb.demospringconfig;
 
+import java.util.List;
+import java.util.Map;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties("mail")
@@ -8,6 +10,84 @@ public class MailConfig {
     private String hostname;
     private int port;
     private String from;
+    private List<String> defaultRecipients;
+    private Map<String, Boolean> additionalHeaders;
+    private CredentialsProperties credentials;
+
+    public static class CredentialsProperties{
+        private String username;
+        private String password;
+        private String authMethod;
+
+        @Override
+        public String toString() {
+            return "CredentialsProperties{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", authMethod='" + authMethod + '\'' +
+                '}';
+        }
+
+        public String getUsername() {
+            return username;
+        }
+
+        public void setUsername(String username) {
+            this.username = username;
+        }
+
+        public String getPassword() {
+            return password;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
+        }
+
+        public String getAuthMethod() {
+            return authMethod;
+        }
+
+        public void setAuthMethod(String authMethod) {
+            this.authMethod = authMethod;
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "MailConfig{" +
+            "hostname='" + hostname + '\'' +
+            ", port=" + port +
+            ", from='" + from + '\'' +
+            ", defaultRecipients=" + defaultRecipients +
+            ", additionalHeaders=" + additionalHeaders +
+            ", credentials=" + credentials +
+            '}';
+    }
+
+    public CredentialsProperties getCredentials() {
+        return credentials;
+    }
+
+    public void setCredentials(CredentialsProperties credentials) {
+        this.credentials = credentials;
+    }
+
+    public Map<String, Boolean> getAdditionalHeaders() {
+        return additionalHeaders;
+    }
+
+    public void setAdditionalHeaders(Map<String, Boolean> additionalHeaders) {
+        this.additionalHeaders = additionalHeaders;
+    }
+
+    public List<String> getDefaultRecipients() {
+        return defaultRecipients;
+    }
+
+    public void setDefaultRecipients(List<String> defaultRecipients) {
+        this.defaultRecipients = defaultRecipients;
+    }
 
     public String getHostname() {
         return hostname;
@@ -33,12 +113,4 @@ public class MailConfig {
         this.from = from;
     }
 
-    @Override
-    public String toString() {
-        return "MailConfig{" +
-                "hostname='" + hostname + '\'' +
-                ", port=" + port +
-                ", from='" + from + '\'' +
-                '}';
-    }
 }
