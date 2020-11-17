@@ -12,16 +12,16 @@ public class MailConfig {
     private String from;
     private List<String> defaultRecipients;
     private Map<String, Boolean> additionalHeaders;
-    private CredentialsProperties credentials;
+    private Credentials credentials;
 
-    public static class CredentialsProperties{
+    public static class Credentials{
         private String username;
         private String password;
         private String authMethod;
 
         @Override
         public String toString() {
-            return "CredentialsProperties{" +
+            return "Credentials{" +
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", authMethod='" + authMethod + '\'' +
@@ -65,11 +65,11 @@ public class MailConfig {
             '}';
     }
 
-    public CredentialsProperties getCredentials() {
+    public Credentials getCredentials() {
         return credentials;
     }
 
-    public void setCredentials(CredentialsProperties credentials) {
+    public void setCredentials(Credentials credentials) {
         this.credentials = credentials;
     }
 
